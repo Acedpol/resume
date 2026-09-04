@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV — Pedro Pablo Cubells Talavera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sidebar-bg: #1b2436;
+    --sidebar-bg-2: #212c42;
+    --sidebar-text: #d7dcea;
+    --sidebar-text-soft: #9aa3bd;
+    --sidebar-border: #323d57;
+    --sidebar-chip: #2a3450;
+    --main-bg: #ffffff;
+    --ink: #23283a;
+    --ink-soft: #5b6178;
+    --accent: #3a63e0;
+    --accent-dark: #24409e;
+    --accent-soft: #eaf0fd;
+    --border: #e4e7f0;
+    --ok: #2f8f5b;
+    --ok-soft: #e5f5ec;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --main-bg: #14151c;
+      --ink: #e7e8ef;
+      --ink-soft: #a4a8bd;
+      --border: #2b2d3d;
+      --accent: #6f92f2;
+      --accent-dark: #a9bdf7;
+      --accent-soft: #1e2740;
+      --ok: #6fbf94;
+      --ok-soft: #16281f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --main-bg: #14151c;
+    --ink: #e7e8ef;
+    --ink-soft: #a4a8bd;
+    --border: #2b2d3d;
+    --accent: #6f92f2;
+    --accent-dark: #a9bdf7;
+    --accent-soft: #1e2740;
+    --ok: #6fbf94;
+    --ok-soft: #16281f;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #444a5a;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html, body { background: #0b0c11; }
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 12px auto;
+    background: var(--main-bg);
+    display: grid;
+    grid-template-columns: 66mm 1fr;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.25);
+    color: var(--ink);
+  }
+
+  /* ---------- SIDEBAR ---------- */
+  .sidebar {
+    background: linear-gradient(180deg, var(--sidebar-bg) 0%, var(--sidebar-bg-2) 100%);
+    color: var(--sidebar-text);
+    padding: 3mm 5mm 1.5mm;
+    height: 100%;
+    /* posición visual fija en columna 1 / fila 1, independiente del orden en el DOM (ver .main) —
+       hace falta fijar también grid-row: el cursor de auto-colocación de Grid avanza siempre hacia
+       delante y no puede volver a la columna 1 en la misma fila una vez colocado .main en la 2 */
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .sidebar h2 {
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8fb0ff;
+    font-weight: 700;
+    margin: 0 0 6px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--sidebar-border);
+  }
+
+  .side-section { margin-bottom: 6px; }
+  .side-section:last-child { margin-bottom: 0; }
+
+  .side-section p {
+    font-size: 9.6px;
+    line-height: 1.5;
+    color: var(--sidebar-text);
+    margin: 0 0 6px;
+  }
+
+  .achieve-item {
+    background: var(--sidebar-chip);
+    border: 1px solid var(--sidebar-border);
+    border-radius: 6px;
+    padding: 4px 8px;
+    margin-bottom: 4px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .achieve-item:last-child { margin-bottom: 0; }
+
+  .achieve-title {
+    font-size: 9.8px;
+    font-weight: 700;
+    color: #f1f3fa;
+    margin: 0 0 2px;
+  }
+  .achieve-title .ic {
+    color: #8fb0ff;
+    margin-right: 5px;
+  }
+  .achieve-body {
+    font-size: 9px;
+    line-height: 1.4;
+    color: var(--sidebar-text-soft);
+    margin: 0;
+  }
+
+  .cert-item {
+    margin-bottom: 7px;
+    padding-left: 10px;
+    position: relative;
+  }
+  .cert-item::before {
+    content: "▪";
+    position: absolute; left: 0; top: 1px;
+    color: #6f8ef0;
+    font-size: 8px;
+  }
+  .cert-item:last-child { margin-bottom: 0; }
+  .cert-title { font-size: 9.6px; font-weight: 600; color: #f1f3fa; margin: 0; }
+  .cert-org { font-size: 8.8px; color: var(--sidebar-text-soft); margin: 1px 0 0; }
+
+  .lang-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  .lang-row:last-child { margin-bottom: 0; }
+  .lang-name { font-size: 9.8px; font-weight: 600; color: #f1f3fa; }
+  .lang-level { font-size: 8.8px; color: var(--sidebar-text-soft); }
+  .lang-dots { display: flex; gap: 3px; margin-top: 3px; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sidebar-border); }
+  .dot.filled { background: #6f8ef0; }
+
+  .strength-card { margin-bottom: 6px; break-inside: avoid; page-break-inside: avoid; }
+  .strength-card:last-child { margin-bottom: 0; }
+  .strength-title {
+    font-size: 9.8px;
+    font-weight: 700;
+    color: #f1f3fa;
+    margin: 0 0 2px;
+  }
+  .strength-body {
+    font-size: 8.8px;
+    line-height: 1.4;
+    color: var(--sidebar-text-soft);
+    margin: 0;
+  }
+
+  .tag-row { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag {
+    font-size: 8.4px;
+    color: #b9c3e0;
+    background: var(--sidebar-chip);
+    border: 1px solid var(--sidebar-border);
+    border-radius: 5px;
+    padding: 2px 6px;
+    line-height: 1.3;
+  }
+
+  /* ---------- MAIN ---------- */
+  /* nombre/contacto/experiencia van primero en el DOM (para que un parser ATS los lea antes que el
+     sidebar), pero se mantienen visualmente en la columna 2 vía grid-column, igual que el sidebar
+     fija su columna 1 arriba — el orden de lectura y el orden visual quedan desacoplados a propósito */
+  .main { padding: 3mm 9mm 4mm 8mm; grid-column: 2; grid-row: 1; }
+
+  .header { margin-bottom: 3px; }
+  .name {
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    margin: 0 0 2px;
+    color: var(--ink);
+  }
+  .headline {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0 0 7px;
+  }
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px 14px;
+    font-size: 9px;
+    color: var(--ink-soft);
+  }
+  .contact-row span { display: inline-flex; align-items: center; gap: 4px; }
+  .contact-row svg { width: 10px; height: 10px; flex: 0 0 auto; stroke: var(--accent); }
+
+  .main h2.section-title {
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    margin: 8px 0 5px;
+    padding-bottom: 3px;
+    border-bottom: 2px solid var(--border);
+  }
+  .main h2.section-title:first-of-type { margin-top: 8px; }
+
+  .exp-item, .edu-item { margin-bottom: 3px; break-inside: avoid; page-break-inside: avoid; }
+  .exp-item:last-child, .edu-item:last-child { margin-bottom: 0; }
+
+  /* flex en vez de float: mismo resultado visual (rol a la izquierda, fecha a la derecha) sin
+     desordenar el flujo de pintado del PDF — un float aquí hacía que Chrome extrajera las fechas
+     antes que el resto del contenido al generar el PDF, rompiendo el orden de lectura para un ATS */
+  .item-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .item-dates {
+    font-size: 8.8px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    margin: 2px 0 2px 10px;
+    flex-shrink: 0;
+  }
+  .item-role { font-size: 10.5px; font-weight: 700; color: var(--ink); }
+  .item-org { font-size: 9.6px; font-weight: 600; color: var(--accent); margin: 2px 0 1px; clear: right; }
+
+  /* variante: título siempre en una línea, fecha baja a la altura del subtítulo */
+  .item-top-stacked .item-role { display: block; }
+  .item-org-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin: 2px 0 1px;
+  }
+  .item-org-row .item-org { margin: 0; }
+  .item-org-row .item-dates { float: none; margin: 0; }
+  .item-loc { font-size: 8.6px; color: var(--ink-soft); }
+  .item-desc { font-size: 9.3px; line-height: 1.45; color: var(--ink-soft); margin: 3px 0 0; }
+  .item-bullets { margin: 4px 0 0; padding-left: 14px; }
+  .item-bullets li { font-size: 9.1px; line-height: 1.45; color: var(--ink-soft); margin-bottom: 2px; }
+  .item-bullets li:last-child { margin-bottom: 0; }
+
+  .skills-cat { margin-bottom: 3px; }
+  .skills-cat:last-child { margin-bottom: 0; }
+  .skills-cat-title {
+    font-size: 9.6px;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 0 0 2px;
+  }
+  .skills-cat-list { font-size: 9.1px; line-height: 1.5; color: var(--ink-soft); margin: 0; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .project-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 8px;
+    background: var(--accent-soft);
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .project-name { font-size: 9.8px; font-weight: 700; color: var(--ink); margin: 0 0 2px; }
+  .project-desc { font-size: 8.7px; line-height: 1.4; color: var(--ink-soft); margin: 0 0 3px; }
+  .project-stack { font-size: 8.1px; color: var(--accent-dark); font-weight: 600; margin: 0; }
+
+  footer.credit {
+    text-align: center;
+    font-size: 7.5px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+    opacity: 0.7;
+  }
+
+  @media print {
+    html, body { background: var(--main-bg); }
+    .page { margin: 0; box-shadow: none; width: 100%; min-height: 297mm; }
+    @page { size: A4; margin: 0; }
+  }
+
+  @media (max-width: 700px) {
+    .page { width: 100%; grid-template-columns: 1fr; }
+    .sidebar, .main { grid-column: 1; grid-row: auto; }
+    .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ===================== MAIN ===================== -->
+  <main class="main">
+
+    <div class="header">
+      <h1 class="name">CUBELLS TALAVERA, PEDRO PABLO</h1>
+      <!-- Contacto justo después del nombre, antes del titular descriptivo: los parsers de RRHH
+           reales (Sovren/Textkernel y motores similares que usan Greenhouse/Workday/iCIMS) buscan
+           el bloque nombre+contacto pegado al principio del documento — una frase larga entre medias
+           puede romper esa detección aunque el email/teléfono se localicen luego por regex en cualquier sitio. -->
+      <div class="contact-row">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" style="display:none"></path><path d="M22 6c0-1.1-.9-2-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6Z"></path><path d="m22 6-10 7L2 6"></path></svg>cubetala96@icloud.com</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>github.com/Acedpol</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>linkedin.com/in/pedro-pablo-cubells-talavera</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Hoyo de Manzanares, Madrid</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><a href="cv.html" style="color:inherit;">CV</a> · <a href="cv-alternativo.html" style="color:inherit;">CV alternativo</a> · <a href="carta-presentacion.html" style="color:inherit;">Carta de presentación</a></span>
+      </div>
+      <p class="headline">Desarrollador Full Stack | React · TypeScript · FastAPI · RAG/IA | Ingeniería de Software (UCM)</p>
+    </div>
+
+    <h2 class="section-title">Experiencia</h2>
+
+    <div class="exp-item">
+      <div class="item-top item-top-stacked">
+        <span class="item-role">Profesor Particular de Informática y Tutor Personal para Alumnos con TDAH</span>
+      </div>
+      <div class="item-org-row">
+        <span class="item-org">Autónomo</span>
+        <span class="item-dates">sept. 2018 – actualidad</span>
+      </div>
+      <div class="item-loc">Torrelodones, Madrid</div>
+      <ul class="item-bullets">
+        <li>Guió a dos alumnos con TDAH muy marcado a lo largo de toda su formación: uno de SMR a ASIR, otro de SMR a DAM; también clases de C# a un universitario de Telecomunicaciones.</li>
+        <li>Diseñó planes de estudio personalizados según el progreso real de cada alumno, no un temario fijo.</li>
+        <li>Combinó presencial y remoto sin perder continuidad en el seguimiento.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="item-top">
+        <span class="item-role">Nivel 7 – Operario Auxiliar Peón</span>
+        <span class="item-dates">ene. 2024 – mar. 2024</span>
+      </div>
+      <div class="item-org">IJC Sistemas</div>
+      <div class="item-loc">Madrid y provincias cercanas</div>
+      <ul class="item-bullets">
+        <li>Instalación, revisión y mantenimiento de sistemas de seguridad (CCTV IP, cableado estructurado, sistemas centralizados).</li>
+        <li>Atención al detalle en despliegues reales siguiendo especificaciones técnicas exactas.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="item-top">
+        <span class="item-role">Nivel 2 – Técnico de Campo Residente TI</span>
+        <span class="item-dates">ago. 2023 – dic. 2023</span>
+      </div>
+      <div class="item-org">Nexus Informática</div>
+      <div class="item-loc">Chamartín, Madrid</div>
+      <ul class="item-bullets">
+        <li>Soporte técnico de campo in situ para Servihabitat Servicios Inmobiliarios S.L., resolviendo incidencias de hardware/software para empleados, directivos y CEO.</li>
+        <li>Mantuvo la red interna con la continuidad de servicio como prioridad.</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">Educación</h2>
+
+    <div class="edu-item">
+      <div class="item-top">
+        <span class="item-role">Grado en Desarrollo de Videojuegos, Ingeniería de Software</span>
+        <span class="item-dates">sept. 2018 – may. 2023</span>
+      </div>
+      <div class="item-org">Universidad Complutense de Madrid</div>
+      <p class="item-desc">Programación desde fundamentos (recursividad, algoritmos voraces) hasta motores extensibles (Singleton, ECS), gráficos e IA de videojuegos, testing de software, negocio digital. Proyectos en equipo con metodologías ágiles.</p>
+    </div>
+
+    <div class="edu-item">
+      <div class="item-top">
+        <span class="item-role">Grado en Diseño y Desarrollo de Videojuegos, Diseño Gráfico</span>
+        <span class="item-dates">sept. 2014 – may. 2018</span>
+      </div>
+      <div class="item-org">Universidad Rey Juan Carlos</div>
+      <p class="item-desc">Programación, arquitecturas gráficas, algoritmos e IA para juegos, deontología profesional y gestión de empresa, dirección de proyectos.</p>
+    </div>
+
+    <div class="edu-item">
+      <div class="item-top">
+        <span class="item-role">Full Stack Software Developer (360h)</span>
+        <span class="item-dates">certificado 11/03/2025</span>
+      </div>
+      <div class="item-org">4Geeks Academy</div>
+    </div>
+
+    <div class="edu-item">
+      <div class="item-top">
+        <span class="item-role">Bachillerato Científico-Tecnológico</span>
+        <span class="item-dates">sept. 2012 – may. 2014</span>
+      </div>
+      <div class="item-org">Colegio Europeo de Madrid</div>
+      <p class="item-desc">Nota media: 8.5/10.</p>
+    </div>
+
+    <h2 class="section-title">Proyectos Destacados</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <p class="project-name">personal-rag-assistant</p>
+        <p class="project-desc">Asistente de IA con RAG: embeddings locales, ChromaDB y generación con Claude/Gemini.</p>
+        <p class="project-stack">FastAPI · ChromaDB · sentence-transformers</p>
+      </div>
+      <div class="project-card">
+        <p class="project-name">personal-rag-assistant-ui</p>
+        <p class="project-desc">Frontend React + TypeScript del asistente RAG: pantallas de Documentos y Preguntas.</p>
+        <p class="project-stack">React · TypeScript · openapi-fetch</p>
+      </div>
+      <div class="project-card">
+        <p class="project-name">expense-api</p>
+        <p class="project-desc">Backend FastAPI de gestión de gastos, con autenticación y migraciones.</p>
+        <p class="project-stack">FastAPI · JWT · SQLAlchemy 2.0 · Alembic</p>
+      </div>
+      <div class="project-card">
+        <p class="project-name">expense-tracker-ui</p>
+        <p class="project-desc">Frontend React + TypeScript que consume expense-api con cliente API tipado.</p>
+        <p class="project-stack">React · TypeScript · OpenAPI</p>
+      </div>
+    </div>
+    <p style="font-size:8px; color:var(--ink-soft); margin:5px 0 0;">Todos con CI en GitHub Actions · github.com/Acedpol</p>
+
+    <h2 class="section-title">Habilidades Técnicas</h2>
+    <div class="skills-grid">
+      <div>
+        <div class="skills-cat">
+          <p class="skills-cat-title">Lenguajes</p>
+          <p class="skills-cat-list">Python, TypeScript, JavaScript, SQL, HTML, CSS</p>
+        </div>
+        <div class="skills-cat">
+          <p class="skills-cat-title">Frameworks / Librerías</p>
+          <p class="skills-cat-list">FastAPI (APIs REST), React, SQLAlchemy, Alembic, Pydantic, LangChain</p>
+        </div>
+        <div class="skills-cat">
+          <p class="skills-cat-title">IA / RAG</p>
+          <p class="skills-cat-list">ChromaDB, sentence-transformers, generación con LLM (Claude, Gemini)</p>
+        </div>
+      </div>
+      <div>
+        <div class="skills-cat">
+          <p class="skills-cat-title">Bases de datos</p>
+          <p class="skills-cat-list">SQLite, PostgreSQL, ChromaDB (vectorial)</p>
+        </div>
+        <div class="skills-cat">
+          <p class="skills-cat-title">DevOps / Testing</p>
+          <p class="skills-cat-list">Git, Docker, GitHub Actions (CI), Pytest, ruff, pre-commit, JWT</p>
+        </div>
+        <div class="skills-cat">
+          <p class="skills-cat-title">Metodologías</p>
+          <p class="skills-cat-list">POO, ECS (Entity-Component-System), patrones de diseño, Scrum / metodologías ágiles</p>
+        </div>
+        <div class="skills-cat">
+          <p class="skills-cat-title">Stack de videojuegos</p>
+          <p class="skills-cat-list">C#, C++, Java, Unity</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar">
+
+    <div class="side-section">
+      <h2>Resumen</h2>
+      <p>Desarrollador Full Stack con formación universitaria en Ingeniería de Software y Desarrollo de Videojuegos (UCM, URJC) y especialización autodidacta en el stack que usan hoy los equipos de producto: React, TypeScript, FastAPI y sistemas de IA generativa (RAG).</p>
+      <p>Ha construido y probado de verdad varios proyectos completos —cada uno con su propio backend y frontend corriendo, CI en GitHub Actions y control de versiones cuidado—, desde una API de gestión de gastos hasta un asistente de IA con recuperación aumentada por generación.</p>
+    </div>
+
+    <div class="side-section">
+      <h2>Logros</h2>
+      <div class="achieve-item">
+        <p class="achieve-title"><span class="ic">★</span>Tutor efectivo</p>
+        <p class="achieve-body">De suspenso (2) a un 8 o más al final de curso: mejora incremental y sostenida de las calificaciones de los alumnos tutorizados, con planes de estudio personalizados según su progreso real.</p>
+      </div>
+      <div class="achieve-item">
+        <p class="achieve-title"><span class="ic">⚙</span>Automatización de build</p>
+        <p class="achieve-body">Automatizó el entorno de compilación (PowerShell 7, motor con PhysX) del Proyecto III en la UCM, reduciendo el tiempo de build de ~1h a ~20min.</p>
+      </div>
+    </div>
+
+    <div class="side-section">
+      <h2>Certificaciones</h2>
+      <div class="cert-item">
+        <p class="cert-title">Full Stack Software Developer (360h)</p>
+        <p class="cert-org">4Geeks Academy</p>
+      </div>
+      <div class="cert-item">
+        <p class="cert-title">Bachillerato Científico-Tecnológico</p>
+        <p class="cert-org">Colegio Europeo de Madrid</p>
+      </div>
+    </div>
+
+    <div class="side-section">
+      <h2>Idiomas</h2>
+      <div class="lang-row-wrap">
+        <div class="lang-row">
+          <div>
+            <div class="lang-name">Español</div>
+            <div class="lang-dots">
+              <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span>
+            </div>
+          </div>
+          <span class="lang-level">Nativo</span>
+        </div>
+        <div class="lang-row">
+          <div>
+            <div class="lang-name">Inglés</div>
+            <div class="lang-dots">
+              <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span>
+            </div>
+          </div>
+          <span class="lang-level">B2</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-section">
+      <h2>Fortalezas</h2>
+      <div class="strength-card">
+        <p class="strength-title">Comunicación técnica</p>
+        <p class="strength-body">9 años traduciendo conceptos complejos a explicaciones claras como tutor — la misma habilidad que documentar código o hacer code review.</p>
+      </div>
+      <div class="strength-card">
+        <p class="strength-title">Resolución bajo presión</p>
+        <p class="strength-body">Soporte técnico de campo con el usuario (incluida dirección) esperando la solución al momento, sin margen para "ya lo miro luego".</p>
+      </div>
+      <div class="strength-card">
+        <p class="strength-title">Autonomía</p>
+        <p class="strength-body">4 proyectos personales terminados de forma autodidacta, cada uno con su propio CI en GitHub Actions y verificación real, no solo "en teoría".</p>
+      </div>
+    </div>
+
+    <div class="side-section">
+      <h2>Información adicional</h2>
+      <p style="margin-bottom:3px;">Modalidad: remoto (prioridad) o Madrid, presencial/híbrido</p>
+      <p style="margin-bottom:0;">Disponibilidad: mínimo 30h/semana</p>
+    </div>
+
+    <div class="side-section">
+      <h2>Próximas mejoras</h2>
+      <div class="tag-row">
+        <span class="tag">Docker en producción</span>
+        <span class="tag">AWS</span>
+        <span class="tag">SOLID / TDD formales</span>
+        <span class="tag">.NET / C#</span>
+        <span class="tag">MCP</span>
+        <span class="tag">Agentes de IA</span>
+      </div>
+    </div>
+
+  </aside>
+
+</div>
+</body>
+</html>

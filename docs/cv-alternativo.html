@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV Alternativo — Pedro Pablo Cubells Talavera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #faf6f0;
+    --card: #ffffff;
+    --ink: #221e1a;
+    --ink-soft: #75695d;
+    --border: #e8dfd2;
+    --accent: #b23a2e;
+    --accent-ink: #7a2118;
+    --accent-soft: #f3e2de;
+    --ok: #3f6b4f;
+    --ok-soft: #e3ede6;
+    --shadow: 0 1px 2px rgba(34, 30, 26, 0.06), 0 4px 16px rgba(34, 30, 26, 0.05);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #1c1815;
+      --card: #242019;
+      --ink: #ede6db;
+      --ink-soft: #a79a8a;
+      --border: #382f26;
+      --accent: #e2604f;
+      --accent-ink: #f2a79a;
+      --accent-soft: #3a2420;
+      --ok: #6fa783;
+      --ok-soft: #263429;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #1c1815;
+    --card: #242019;
+    --ink: #ede6db;
+    --ink-soft: #a79a8a;
+    --border: #382f26;
+    --accent: #e2604f;
+    --accent-ink: #f2a79a;
+    --accent-soft: #3a2420;
+    --ok: #6fa783;
+    --ok-soft: #263429;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 900px; margin: 0 auto; padding: 48px 28px 72px; }
+
+  /* ---------- header ---------- */
+  .cv-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+
+  h1 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(28px, 4vw, 38px);
+    line-height: 1.12;
+    margin: 0 0 8px;
+    text-wrap: balance;
+  }
+
+  .headline {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 0;
+  }
+
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-align: right;
+  }
+  .contact-list a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid var(--border); }
+  .contact-list a:hover { border-bottom-color: var(--accent-ink); }
+
+  /* ---------- layout ---------- */
+  .layout {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  @media (max-width: 760px) {
+    .layout { grid-template-columns: 1fr; }
+    .cv-header { flex-direction: column; align-items: flex-start; }
+    .contact-list { text-align: left; }
+  }
+
+  .col { display: flex; flex-direction: column; gap: 20px; }
+
+  /* ---------- cards (reused pattern) ---------- */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 20px 0;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .card-label {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 700;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--ok);
+    background: var(--ok-soft);
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+
+  .card-body { padding: 10px 20px 14px; }
+
+  /* experience / education items */
+  .entry { padding: 10px 20px; border-top: 1px solid var(--border); break-inside: avoid; page-break-inside: avoid; }
+  .entry:first-of-type { border-top: none; }
+
+  .entry-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .entry-role { font-weight: 600; font-size: 15.5px; color: var(--ink); }
+  .entry-dates {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .entry-org { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; font-weight: 600; color: var(--accent-ink); margin: 2px 0; }
+  .entry-loc { font-size: 12px; color: var(--ink-soft); margin: 0 0 6px; }
+  .entry ul { margin: 6px 0 0; padding-left: 18px; }
+  .entry li { font-size: 13.5px; line-height: 1.55; color: var(--ink); margin-bottom: 3px; }
+  .entry li:last-child { margin-bottom: 0; }
+  .entry p.desc { font-size: 13.5px; line-height: 1.55; color: var(--ink); margin: 4px 0 0; }
+
+  /* project cards */
+  .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px 20px 14px; }
+  @media (max-width: 520px) { .proj-grid { grid-template-columns: 1fr; } }
+  .proj-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    background: var(--accent-soft);
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .proj-name { font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 700; font-size: 13px; color: var(--ink); margin: 0 0 4px; }
+  .proj-desc { font-size: 12.5px; line-height: 1.5; color: var(--ink-soft); margin: 0 0 6px; }
+  .proj-stack { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10.5px; color: var(--accent-ink); font-weight: 600; margin: 0; }
+
+  /* skills */
+  .skill-group { padding: 8px 20px; border-top: 1px solid var(--border); break-inside: avoid; page-break-inside: avoid; }
+  .skill-group:first-of-type { border-top: none; }
+  .skill-group-title {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--accent-ink);
+    text-transform: uppercase;
+    margin: 0 0 4px;
+  }
+  .skill-group-list { font-size: 13px; line-height: 1.55; color: var(--ink); margin: 0; }
+
+  /* sidebar fields */
+  .field { padding: 8px 20px; border-top: 1px solid var(--border); break-inside: avoid; page-break-inside: avoid; }
+  .field:first-of-type { border-top: none; }
+  .field-label {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+    font-weight: 700;
+    margin: 0 0 4px;
+  }
+  .field-value { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--ink); }
+
+  /* achievement mini cards */
+  .achieve { display: flex; gap: 10px; align-items: flex-start; break-inside: avoid; page-break-inside: avoid; }
+  .achieve-icon {
+    flex: 0 0 auto;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .achieve-title { font-weight: 600; font-size: 13.5px; color: var(--ink); margin: 0 0 2px; }
+  .achieve-body { font-size: 12.5px; line-height: 1.5; color: var(--ink-soft); margin: 0; }
+
+  /* languages */
+  .lang-row { display: flex; align-items: center; justify-content: space-between; }
+  .lang-name { font-weight: 600; font-size: 13.5px; }
+  .lang-level {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    background: var(--paper);
+    border: 1px solid var(--border);
+    padding: 2px 9px;
+    border-radius: 999px;
+  }
+
+  /* strengths */
+  .strength { margin-bottom: 10px; }
+  .strength:last-child { margin-bottom: 0; }
+  .strength-title { font-weight: 600; font-size: 13px; color: var(--ink); margin: 0 0 2px; }
+  .strength-body { font-size: 12.5px; line-height: 1.5; color: var(--ink-soft); margin: 0; }
+
+  /* tags */
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px 8px;
+  }
+
+  footer.credit {
+    text-align: center;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    margin-top: 36px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+
+  @media print {
+    body { background: var(--paper); }
+    .page { max-width: 100%; padding: 0; }
+    .card { box-shadow: none; break-inside: avoid; page-break-inside: avoid; }
+    footer.credit { display: none; }
+    /* La cuadrícula de 2 columnas no pagina bien al imprimir (Chrome agota
+       la 1ª columna en varias páginas antes de empezar la 2ª) — forzamos
+       una sola columna, en el mismo orden de lectura, para que el motor de
+       paginación normal (por bloques) aproveche cada página al máximo. */
+    .layout { display: block; }
+    .col { gap: 14px; }
+    .col + .col { margin-top: 14px; }
+    /* Margen en @page, no en .page: un padding en un bloque que se corta
+       entre páginas solo se aplica al principio del primero y al final del
+       último fragmento — con @page se repite arriba y abajo en cada hoja. */
+    @page { size: A4; margin: 14mm 12mm; background: #faf6f0; }
+  }
+  /* @page no admite selectores de atributo (no se puede condicionar a
+     [data-theme]), solo el color-scheme real del sistema/navegador en
+     impresión nativa — de ahí el literal duplicado en vez de var(--paper). */
+  @media print and (prefers-color-scheme: dark) {
+    @page { background: #1c1815; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="cv-header">
+    <div>
+      <p class="eyebrow">Curriculum Vitae</p>
+      <h1>Pedro Pablo Cubells Talavera</h1>
+      <p class="headline">Desarrollador Full Stack | React · TypeScript · FastAPI · RAG/IA | Ingeniería de Software (UCM) | Software interactivo y videojuegos</p>
+    </div>
+    <div class="contact-list">
+      <span>cubetala96@icloud.com</span>
+      <span><a href="https://github.com/Acedpol" target="_blank" rel="noopener">github.com/Acedpol</a></span>
+      <span><a href="https://linkedin.com/in/pedro-pablo-cubells-talavera-2a23a2281" target="_blank" rel="noopener">linkedin.com/in/pedro-pablo-cubells-talavera</a></span>
+      <span>Hoyo de Manzanares, Madrid</span>
+      <span><a href="cv.html">CV</a> · <a href="cv-alternativo.html">CV alternativo</a> · <a href="carta-presentacion.html">Carta de presentación</a></span>
+    </div>
+  </div>
+
+  <div class="layout">
+
+    <!-- ============ COLUMNA PRINCIPAL ============ -->
+    <div class="col">
+
+      <section class="card">
+        <div class="card-head">
+          <span class="card-label">Resumen</span>
+        </div>
+        <div class="card-body">
+          <p style="font-size:14.5px; line-height:1.6; margin:0 0 8px;">Desarrollador Full Stack con formación universitaria en Ingeniería de Software y Desarrollo de Videojuegos (UCM, URJC) y especialización autodidacta en el stack que usan hoy los equipos de producto: React, TypeScript, FastAPI y sistemas de IA generativa (RAG).</p>
+          <p style="font-size:14.5px; line-height:1.6; margin:0;">Ha construido y probado de verdad varios proyectos completos —cada uno con su propio backend y frontend corriendo, CI en GitHub Actions y control de versiones cuidado—, desde una API de gestión de gastos hasta un asistente de IA con recuperación aumentada por generación.</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <span class="card-label">Experiencia</span>
+        </div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <span class="entry-role">Profesor Particular de Informática y Tutor Personal para Alumnos con TDAH</span>
+            <span class="entry-dates">sept. 2018 – actualidad</span>
+          </div>
+          <div class="entry-org">Autónomo</div>
+          <div class="entry-loc">Torrelodones, Madrid</div>
+          <ul>
+            <li>Guió a dos alumnos con TDAH muy marcado a lo largo de toda su formación: uno de SMR a ASIR, otro de SMR a DAM; también clases de C# a un universitario de Telecomunicaciones.</li>
+            <li>Diseñó planes de estudio personalizados según el progreso real de cada alumno, no un temario fijo.</li>
+            <li>Combinó presencial y remoto sin perder continuidad en el seguimiento.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <span class="entry-role">Nivel 7 – Operario Auxiliar Peón</span>
+            <span class="entry-dates">ene. 2024 – mar. 2024</span>
+          </div>
+          <div class="entry-org">IJC Sistemas</div>
+          <div class="entry-loc">Madrid y provincias cercanas</div>
+          <ul>
+            <li>Instalación, revisión y mantenimiento de sistemas de seguridad (CCTV IP, cableado estructurado, sistemas centralizados).</li>
+            <li>Atención al detalle en despliegues reales siguiendo especificaciones técnicas exactas.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <span class="entry-role">Nivel 2 – Técnico de Campo Residente TI</span>
+            <span class="entry-dates">ago. 2023 – dic. 2023</span>
+          </div>
+          <div class="entry-org">Nexus Informática</div>
+          <div class="entry-loc">Chamartín, Madrid</div>
+          <ul>
+            <li>Soporte técnico de campo in situ para Servihabitat Servicios Inmobiliarios S.L., resolviendo incidencias de hardware/software para empleados, directivos y CEO.</li>
+            <li>Mantuvo la red interna con la continuidad de servicio como prioridad.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <span class="card-label">Educación</span>
+        </div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <span class="entry-role">Grado en Desarrollo de Videojuegos, Ingeniería de Software</span>
+            <span class="entry-dates">sept. 2018 – may. 2023</span>
+          </div>
+          <div class="entry-org">Universidad Complutense de Madrid</div>
+          <p class="desc">Programación desde fundamentos (recursividad, algoritmos voraces) hasta motores extensibles (Singleton, ECS), gráficos e IA de videojuegos, testing de software, negocio digital. Proyectos en equipo con metodologías ágiles.</p>
+        </div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <span class="entry-role">Grado en Diseño y Desarrollo de Videojuegos, Diseño Gráfico</span>
+            <span class="entry-dates">sept. 2014 – may. 2018</span>
+          </div>
+          <div class="entry-org">Universidad Rey Juan Carlos</div>
+          <p class="desc">Programación, arquitecturas gráficas, algoritmos e IA para juegos, deontología profesional y gestión de empresa, dirección de proyectos.</p>
+        </div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <span class="entry-role">Full Stack Software Developer (360h)</span>
+            <span class="entry-dates">certificado 11/03/2025</span>
+          </div>
+          <div class="entry-org">4Geeks Academy</div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <span class="entry-role">Bachillerato Científico-Tecnológico</span>
+            <span class="entry-dates">sept. 2012 – may. 2014</span>
+          </div>
+          <div class="entry-org">Colegio Europeo de Madrid</div>
+          <p class="desc">Nota media: 8.5/10.</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <span class="card-label">Proyectos destacados</span>
+          <span class="badge">✓ CI en GitHub Actions</span>
+        </div>
+        <div class="proj-grid">
+          <div class="proj-card">
+            <p class="proj-name">personal-rag-assistant</p>
+            <p class="proj-desc">Asistente de IA con RAG: embeddings locales, ChromaDB y generación con Claude/Gemini.</p>
+            <p class="proj-stack">FastAPI · ChromaDB · sentence-transformers</p>
+          </div>
+          <div class="proj-card">
+            <p class="proj-name">personal-rag-assistant-ui</p>
+            <p class="proj-desc">Frontend React + TypeScript del asistente RAG: pantallas de Documentos y Preguntas.</p>
+            <p class="proj-stack">React · TypeScript · openapi-fetch</p>
+          </div>
+          <div class="proj-card">
+            <p class="proj-name">expense-api</p>
+            <p class="proj-desc">Backend FastAPI de gestión de gastos, con autenticación y migraciones.</p>
+            <p class="proj-stack">FastAPI · JWT · SQLAlchemy 2.0 · Alembic</p>
+          </div>
+          <div class="proj-card">
+            <p class="proj-name">expense-tracker-ui</p>
+            <p class="proj-desc">Frontend React + TypeScript que consume expense-api con cliente API tipado.</p>
+            <p class="proj-stack">React · TypeScript · OpenAPI</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <span class="card-label">Habilidades técnicas</span>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-title">Lenguajes</p>
+          <p class="skill-group-list">Python, TypeScript, JavaScript, SQL, HTML, CSS</p>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-title">Frameworks / Librerías</p>
+          <p class="skill-group-list">FastAPI (APIs REST), React, SQLAlchemy, Alembic, Pydantic, LangChain</p>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-title">IA / RAG</p>
+          <p class="skill-group-list">ChromaDB, sentence-transformers, generación con LLM (Claude, Gemini)</p>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-title">Bases de datos</p>
+          <p class="skill-group-list">SQLite, PostgreSQL, ChromaDB (vectorial)</p>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-title">DevOps / Testing</p>
+          <p class="skill-group-list">Git, Docker, GitHub Actions (CI), Pytest, ruff, pre-commit, JWT</p>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-title">Metodologías</p>
+          <p class="skill-group-list">POO, ECS (Entity-Component-System), patrones de diseño, Scrum / metodologías ágiles</p>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-title">Stack de videojuegos</p>
+          <p class="skill-group-list">C#, C++, Java, Unity</p>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ============ SIDEBAR ============ -->
+    <div class="col">
+
+      <section class="card">
+        <div class="card-head"><span class="card-label">Logros</span></div>
+        <div class="card-body" style="display:flex; flex-direction:column; gap:14px;">
+          <div class="achieve">
+            <div class="achieve-icon">★</div>
+            <div>
+              <p class="achieve-title">Tutor efectivo</p>
+              <p class="achieve-body">De suspenso (2) a un 8 o más al final de curso: mejora incremental y sostenida de las calificaciones de los alumnos tutorizados, con planes de estudio personalizados según su progreso real.</p>
+            </div>
+          </div>
+          <div class="achieve">
+            <div class="achieve-icon">⚙</div>
+            <div>
+              <p class="achieve-title">Automatización de build</p>
+              <p class="achieve-body">Automatizó el entorno de compilación (PowerShell 7, motor con PhysX) del Proyecto III en la UCM: de ~1h a ~20min.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><span class="card-label">Certificaciones</span></div>
+        <div class="card-body">
+          <p class="field-value" style="margin-bottom:6px;">Full Stack Software Developer — 4Geeks Academy (360h)</p>
+          <p class="field-value" style="margin-bottom:0;">Bachillerato Científico-Tecnológico — Colegio Europeo de Madrid</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><span class="card-label">Idiomas</span></div>
+        <div class="card-body" style="display:flex; flex-direction:column; gap:10px;">
+          <div class="lang-row">
+            <span class="lang-name">Español</span>
+            <span class="lang-level">Nativo</span>
+          </div>
+          <div class="lang-row">
+            <span class="lang-name">Inglés</span>
+            <span class="lang-level">B2</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><span class="card-label">Fortalezas</span></div>
+        <div class="card-body">
+          <div class="strength">
+            <p class="strength-title">Comunicación técnica</p>
+            <p class="strength-body">9 años traduciendo conceptos complejos a explicaciones claras como tutor — la misma habilidad que documentar código o hacer code review.</p>
+          </div>
+          <div class="strength">
+            <p class="strength-title">Resolución bajo presión</p>
+            <p class="strength-body">Soporte técnico de campo con el usuario (incluida dirección) esperando la solución al momento, sin margen para "ya lo miro luego".</p>
+          </div>
+          <div class="strength">
+            <p class="strength-title">Autonomía</p>
+            <p class="strength-body">4 proyectos personales terminados de forma autodidacta, cada uno con su propio CI en GitHub Actions y verificación real.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><span class="card-label">Información adicional</span></div>
+        <div class="field">
+          <p class="field-label">Modalidad</p>
+          <p class="field-value">Remoto (prioridad) o Madrid, presencial/híbrido</p>
+        </div>
+        <div class="field">
+          <p class="field-label">Disponibilidad</p>
+          <p class="field-value">Mínimo 30h/semana</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><span class="card-label">Próximas mejoras</span></div>
+        <div class="card-body">
+          <div class="tag-row">
+            <span class="tag">Docker en producción</span>
+            <span class="tag">AWS</span>
+            <span class="tag">SOLID / TDD formales</span>
+            <span class="tag">.NET / C#</span>
+            <span class="tag">MCP</span>
+            <span class="tag">Agentes de IA</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="credit">Pedro Pablo Cubells Talavera · github.com/Acedpol</footer>
+
+</div>
+</body>
+</html>
