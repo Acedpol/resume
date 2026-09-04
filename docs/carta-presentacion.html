@@ -514,6 +514,30 @@
     .stat-row { flex-direction: column; gap: 4px; }
     .mini-tl-item { flex-direction: column; gap: 2px; }
     .mini-tl-period { width: auto; }
+
+    /* el stepper puede ocupar varias filas en pantallas estrechas y tapar el título si se deja envolver — una sola fila con scroll horizontal evita el solape */
+    .stepper-row { justify-content: flex-start; }
+    .stepper {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .stepper::-webkit-scrollbar { display: none; }
+
+    .eyebrow, h1.slide-title, h2.slide-title, .hook {
+      text-align: center;
+    }
+    .slide-lede {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .contact-row {
+      justify-content: center;
+      text-align: center;
+    }
   }
 </style>
 
