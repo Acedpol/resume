@@ -18,6 +18,7 @@
     --ok: #3f6b4f;
     --ok-soft: #e3ede6;
     --shadow: 0 1px 2px rgba(34, 30, 26, 0.06), 0 4px 16px rgba(34, 30, 26, 0.05);
+    --nav-h: 96px; /* fallback antes de que el JS mida la altura real de .stepper-row */
   }
 
   @media (prefers-color-scheme: dark) {
@@ -168,7 +169,7 @@
     min-height: 100vh;
     width: 100%;
     align-items: center;
-    padding: 96px 8vw 100px;
+    padding: var(--nav-h) 8vw 100px;
   }
 
   .slide.is-visible { display: flex; }
@@ -510,7 +511,7 @@
   .timeline-link a:hover { border-bottom-color: var(--accent-ink); }
 
   @media (max-width: 640px) {
-    .slide { padding: 84px 6vw 92px; }
+    .slide { padding: var(--nav-h) 6vw 92px; }
     .stat-row { flex-direction: column; gap: 4px; }
     .mini-tl-item { flex-direction: column; gap: 2px; }
     .mini-tl-period { width: auto; }
@@ -783,6 +784,19 @@
 </div>
 
 <script>
+  (function () {
+    var stepperRow = document.querySelector('.stepper-row');
+    if (!stepperRow) return;
+    function setNavHeight() {
+      document.documentElement.style.setProperty('--nav-h', (stepperRow.offsetHeight + 24) + 'px');
+    }
+    setNavHeight();
+    window.addEventListener('resize', setNavHeight);
+    if (window.ResizeObserver) {
+      new ResizeObserver(setNavHeight).observe(stepperRow);
+    }
+  })();
+
   var TOTAL_BLOCKS = 7;
   var currentBlock = 1;
 
