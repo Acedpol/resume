@@ -61,6 +61,7 @@
     font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    overflow-anchor: none; /* evita que el navegador recoloque el scroll tras el cambio de bloque, peleando con el reset a (0,0) */
   }
 
   /* top stepper */
@@ -800,6 +801,11 @@
     currentBlock = n;
     updateStepper();
     updateNav();
+    // overflow-x:hidden en html,body fuerza overflow-y:auto (regla de la spec) -- body
+    // acaba siendo el contenedor real de scroll, no window/html, asi que scrollTo(0,0)
+    // por si solo no hacia nada real. Reset explicito de los tres posibles.
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
     window.scrollTo(0, 0);
   }
 
